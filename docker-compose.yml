@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+
+  statless-auth-db:
+    container_name: statless-auth-db
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: auth-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - auth
+
+  statful-auth-db:
+    container_name: statful-auth-db
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: auth-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    networks:
+      - auth
+
+
+  token-redis:
+    container_name: token-redis
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - auth
+
+
+networks:
+  auth:
+    driver: bridge
