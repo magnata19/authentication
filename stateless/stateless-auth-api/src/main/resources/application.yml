@@ -2,6 +2,10 @@ spring:
   application:
     name: stateless-auth-api
 
+app:
+  token:
+    secret-key: ${JWT_SECRET_KEY:Y3Vyc28tYXV0ZW50aWNhY2FvLXN0YXRlZnVsLXN0YXRlbGVzcy1taWNyb3NzZXJ2aWNvcw==}
+
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:auth-db}
